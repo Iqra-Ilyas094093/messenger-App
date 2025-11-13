@@ -1,5 +1,8 @@
 import 'package:flutter/material.dart';
 import 'package:google_fonts/google_fonts.dart';
+import 'package:messenger_app/views/screens/audio_call_screen.dart';
+import 'package:messenger_app/views/screens/chatScreen.dart';
+import 'package:messenger_app/views/screens/video_call_screen.dart';
 
 void main() {
   runApp(const MyApp());
@@ -136,16 +139,25 @@ class _ContactDetailsScreenState extends State<ContactDetailsScreen> {
                       icon: Icons.call,
                       label: 'Call',
                       color: primaryColor,
+                      ontap: (){
+                        Navigator.of(context).push(MaterialPageRoute(builder: (_)=>AudioCallScreen()));
+                      }
                     ),
                     _buildActionButton(
                       icon: Icons.videocam,
                       label: 'Video',
                       color: primaryColor,
+                      ontap: (){
+                        Navigator.of(context).push(MaterialPageRoute(builder: (_)=>VideoCallScreen()));
+                      }
                     ),
                     _buildActionButton(
                       icon: Icons.chat_bubble_outline,
                       label: 'Message',
                       color: primaryColor,
+                      ontap: (){
+                        Navigator.of(context).push(MaterialPageRoute(builder: (_)=>ChatScreen()));
+                      }
                     ),
                   ],
                 ),
@@ -235,30 +247,34 @@ class _ContactDetailsScreenState extends State<ContactDetailsScreen> {
     required IconData icon,
     required String label,
     required Color color,
+    required VoidCallback ontap,
   }) {
-    return Column(
-      children: [
-        Container(
-          decoration: BoxDecoration(
-            color: color,
-            shape: BoxShape.circle,
+    return GestureDetector(
+      onTap: ontap,
+      child: Column(
+        children: [
+          Container(
+            decoration: BoxDecoration(
+              color: color,
+              shape: BoxShape.circle,
+            ),
+            padding: const EdgeInsets.all(16),
+            child: Icon(
+              icon,
+              color: Colors.black,
+              size: 24,
+            ),
           ),
-          padding: const EdgeInsets.all(16),
-          child: Icon(
-            icon,
-            color: Colors.black,
-            size: 24,
+          const SizedBox(height: 8),
+          Text(
+            label,
+            style: const TextStyle(
+              fontSize: 14,
+              fontWeight: FontWeight.w500,
+            ),
           ),
-        ),
-        const SizedBox(height: 8),
-        Text(
-          label,
-          style: const TextStyle(
-            fontSize: 14,
-            fontWeight: FontWeight.w500,
-          ),
-        ),
-      ],
+        ],
+      ),
     );
   }
 

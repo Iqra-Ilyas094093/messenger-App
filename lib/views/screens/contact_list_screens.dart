@@ -86,48 +86,27 @@ class _ContactsPageState extends State<ContactsPage> {
                   children: [
                     // Header
                     Padding(
-                      padding: const EdgeInsets.all(16.0),
+                      padding: const EdgeInsets.symmetric(vertical: 16.0,horizontal: 12),
                       child: Row(
+                        mainAxisAlignment: MainAxisAlignment.start,
                         children: [
-                          const SizedBox(width: 48),
-                          Expanded(
-                            child: Text(
-                              "Contacts",
-                              textAlign: TextAlign.center,
-                              style: TextStyle(
-                                fontSize: 20,
-                                fontWeight: FontWeight.bold,
-                                color: isDark ? Colors.white : Colors.black,
-                              ),
+                          IconButton(
+                            onPressed: () {
+                              Navigator.pop(context);
+                            },
+                            icon: const Icon(Icons.arrow_back),
+                            style: IconButton.styleFrom(
+                              shape: const CircleBorder(),
                             ),
                           ),
-                          SizedBox(
-                            width: 48,
-                            child: Row(
-                              children: [
-                                IconButton(
-                                  onPressed: () {},
-                                  icon: Icon(
-                                    Icons.search,
-                                    color: isDark ? const Color(0xFFd4d4d8) : const Color(0xFF52525b),
-                                  ),
-                                  style: IconButton.styleFrom(
-                                    backgroundColor: Colors.transparent,
-                                    shape: const CircleBorder(),
-                                  ),
-                                ),
-                                IconButton(
-                                  onPressed: () {},
-                                  icon: Icon(
-                                    Icons.person_add,
-                                    color: isDark ? const Color(0xFFd4d4d8) : const Color(0xFF52525b),
-                                  ),
-                                  style: IconButton.styleFrom(
-                                    backgroundColor: Colors.transparent,
-                                    shape: const CircleBorder(),
-                                  ),
-                                ),
-                              ],
+                          const SizedBox(width: 100,),
+                          Text(
+                            "Contacts",
+                            textAlign: TextAlign.center,
+                            style: TextStyle(
+                              fontSize: 20,
+                              fontWeight: FontWeight.bold,
+                              color: isDark ? Colors.white : Colors.black,
                             ),
                           ),
                         ],

@@ -243,37 +243,40 @@ class _SettingsScreenState extends State<SettingsScreen> {
               // Log Out Button
               SizedBox(
                 width: double.infinity,
-                child: ElevatedButton(
-                  onPressed: () {
-                    _showLogoutDialog();
-                  },
-                  style: ElevatedButton.styleFrom(
-                    backgroundColor: Colors.red.withOpacity(0.1),
-                    foregroundColor: Colors.red.shade400,
-                    shape: RoundedRectangleBorder(
-                      borderRadius: BorderRadius.circular(12),
-                    ),
-                    elevation: 0,
-                    padding: const EdgeInsets.symmetric(vertical: 12),
-                  ),
-                  child: Row(
-                    mainAxisAlignment: MainAxisAlignment.center,
-                    children: [
-                      const Icon(Icons.logout, size: 20),
-                      const SizedBox(width: 8),
-                      const Text(
-                        'Log Out',
-                        style: TextStyle(
-                          fontSize: 16,
-                          fontWeight: FontWeight.bold,
-                        ),
+                child: Padding(
+                  padding: const EdgeInsets.symmetric(horizontal: 12.0),
+                  child: ElevatedButton(
+                    onPressed: () {
+                      _showLogoutDialog();
+                    },
+                    style: ElevatedButton.styleFrom(
+                      backgroundColor: Colors.red.withOpacity(0.1),
+                      foregroundColor: Colors.red.shade400,
+                      shape: RoundedRectangleBorder(
+                        borderRadius: BorderRadius.circular(12),
                       ),
-                    ],
+                      elevation: 0,
+                      padding: const EdgeInsets.symmetric(vertical: 12,),
+                    ),
+                    child: Row(
+                      mainAxisAlignment: MainAxisAlignment.center,
+                      children: [
+                        const Icon(Icons.logout, size: 20),
+                        const SizedBox(width: 8),
+                        const Text(
+                          'Log Out',
+                          style: TextStyle(
+                            fontSize: 16,
+                            fontWeight: FontWeight.bold,
+                          ),
+                        ),
+                      ],
+                    ),
                   ),
                 ),
               ),
           
-              const SizedBox(height: 64),
+              const SizedBox(height: 10),
             ],
           ),
         ),
@@ -287,112 +290,115 @@ class _SettingsScreenState extends State<SettingsScreen> {
     required Color mutedTextColor,
     required Color primaryColor,
   }) {
-    return Column(
-      crossAxisAlignment: CrossAxisAlignment.start,
-      children: [
-        Padding(
-          padding: const EdgeInsets.symmetric(horizontal: 16, vertical: 4),
-          child: Text(
-            title,
-            style: TextStyle(
-              color: mutedTextColor,
-              fontSize: 16,
-              fontWeight: FontWeight.bold,
-              letterSpacing: -0.015,
+    return Padding(
+      padding: const EdgeInsets.symmetric(horizontal:12.0),
+      child: Column(
+        crossAxisAlignment: CrossAxisAlignment.start,
+        children: [
+          Padding(
+            padding: const EdgeInsets.symmetric(horizontal: 16, vertical: 4),
+            child: Text(
+              title,
+              style: TextStyle(
+                color: mutedTextColor,
+                fontSize: 16,
+                fontWeight: FontWeight.bold,
+                letterSpacing: -0.015,
+              ),
             ),
           ),
-        ),
-        Container(
-          decoration: BoxDecoration(
-            color: primaryColor.withOpacity(0.1),
-            borderRadius: BorderRadius.circular(12),
-          ),
-          child: Column(
-            children: items.map((item) {
-              return Material(
-                color: Colors.transparent,
-                child: InkWell(
-                  onTap: item.onTap,
-                  borderRadius: items.indexOf(item) == 0
-                      ? const BorderRadius.only(
-                    topLeft: Radius.circular(12),
-                    topRight: Radius.circular(12),
-                  )
-                      : items.indexOf(item) == items.length - 1
-                      ? const BorderRadius.only(
-                    bottomLeft: Radius.circular(12),
-                    bottomRight: Radius.circular(12),
-                  )
-                      : null,
-                  child: Container(
-                    padding: const EdgeInsets.symmetric(horizontal: 16),
-                    height: 64,
-                    child: Row(
-                      children: [
-                        // Icon
-                        Container(
-                          width: 40,
-                          height: 40,
-                          decoration: BoxDecoration(
-                            shape: BoxShape.circle,
+          Container(
+            decoration: BoxDecoration(
+              color: primaryColor.withOpacity(0.1),
+              borderRadius: BorderRadius.circular(12),
+            ),
+            child: Column(
+              children: items.map((item) {
+                return Material(
+                  color: Colors.transparent,
+                  child: InkWell(
+                    onTap: item.onTap,
+                    borderRadius: items.indexOf(item) == 0
+                        ? const BorderRadius.only(
+                      topLeft: Radius.circular(12),
+                      topRight: Radius.circular(12),
+                    )
+                        : items.indexOf(item) == items.length - 1
+                        ? const BorderRadius.only(
+                      bottomLeft: Radius.circular(12),
+                      bottomRight: Radius.circular(12),
+                    )
+                        : null,
+                    child: Container(
+                      padding: const EdgeInsets.symmetric(horizontal: 16),
+                      height: 64,
+                      child: Row(
+                        children: [
+                          // Icon
+                          Container(
+                            width: 40,
+                            height: 40,
+                            decoration: BoxDecoration(
+                              shape: BoxShape.circle,
+                            ),
+                            child: Icon(
+                              item.icon,
+                              color: primaryColor,
+                              size: 24,
+                            ),
                           ),
-                          child: Icon(
-                            item.icon,
-                            color: primaryColor,
-                            size: 24,
-                          ),
-                        ),
-                        const SizedBox(width: 16),
-                        // Title and Subtitle
-                        Expanded(
-                          child: Column(
-                            mainAxisAlignment: MainAxisAlignment.center,
-                            crossAxisAlignment: CrossAxisAlignment.start,
-                            children: [
-                              Text(
-                                item.title,
-                                style: const TextStyle(
-                                  color: Colors.white,
-                                  fontSize: 16,
-                                  fontWeight: FontWeight.w500,
-                                ),
-                                maxLines: 1,
-                                overflow: TextOverflow.ellipsis,
-                              ),
-                              if (item.subtitle != null) ...[
-                                const SizedBox(height: 2),
+                          const SizedBox(width: 16),
+                          // Title and Subtitle
+                          Expanded(
+                            child: Column(
+                              mainAxisAlignment: MainAxisAlignment.center,
+                              crossAxisAlignment: CrossAxisAlignment.start,
+                              children: [
                                 Text(
-                                  item.subtitle!,
-                                  style: TextStyle(
-                                    color: mutedTextColor,
-                                    fontSize: 14,
-                                    fontWeight: FontWeight.normal,
+                                  item.title,
+                                  style: const TextStyle(
+                                    color: Colors.white,
+                                    fontSize: 16,
+                                    fontWeight: FontWeight.w500,
                                   ),
                                   maxLines: 1,
                                   overflow: TextOverflow.ellipsis,
                                 ),
+                                if (item.subtitle != null) ...[
+                                  const SizedBox(height: 2),
+                                  Text(
+                                    item.subtitle!,
+                                    style: TextStyle(
+                                      color: mutedTextColor,
+                                      fontSize: 14,
+                                      fontWeight: FontWeight.normal,
+                                    ),
+                                    maxLines: 1,
+                                    overflow: TextOverflow.ellipsis,
+                                  ),
+                                ],
                               ],
-                            ],
+                            ),
                           ),
-                        ),
-                        // Trailing Widget
-                        if (item.trailing != null)
-                          item.trailing!
-                        else
-                          Icon(
-                            Icons.arrow_forward_ios,
-                            color: mutedTextColor,
-                            size: 20,
-                          ),
-                      ],
+                          // Trailing Widget
+                          if (item.trailing != null)
+                            item.trailing!
+                          else
+                            Icon(
+                              Icons.arrow_forward_ios,
+                              color: mutedTextColor,
+                              size: 20,
+                            ),
+                        ],
+                      ),
                     ),
                   ),
-                ),
-              );
-            }).toList(),
+                );
+              }).toList(),
+            ),
           ),
-        ),
-      ],
+        ],
+      ),
     );
   }
 

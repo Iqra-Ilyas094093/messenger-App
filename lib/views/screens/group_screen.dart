@@ -1,6 +1,5 @@
 import 'package:flutter/material.dart';
 import 'package:messenger_app/views/screens/group_chat_screen.dart';
-import 'package:messenger_app/views/screens/group_details_screen.dart';
 
 class Group {
   final String name;
@@ -80,26 +79,16 @@ class _GroupsScreenState extends State<GroupsScreen> {
             ),
             padding: const EdgeInsets.all(16).copyWith(bottom: 8),
             child: Row(
+              mainAxisAlignment: MainAxisAlignment.center,
+              crossAxisAlignment: CrossAxisAlignment.center,
               children: [
-                Expanded(
-                  child: Text(
-                    'Groups',
-                    style: TextStyle(
-                      color: isDark ? Colors.white : const Color(0xFF0F172A),
-                      fontSize: 24,
-                      fontWeight: FontWeight.bold,
-                      letterSpacing: -0.015,
-                    ),
-                  ),
-                ),
-                IconButton(
-                  onPressed: () {
-                    // Handle search action
-                  },
-                  icon: Icon(
-                    Icons.search,
-                    color: isDark ? Colors.white : mutedTextColor,
-                    size: 28,
+                Text(
+                  'Groups',
+                  style: TextStyle(
+                    color: isDark ? Colors.white : const Color(0xFF0F172A),
+                    fontSize: 24,
+                    fontWeight: FontWeight.bold,
+                    letterSpacing: -0.015,
                   ),
                 ),
               ],

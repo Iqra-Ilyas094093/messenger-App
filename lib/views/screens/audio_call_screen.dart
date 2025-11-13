@@ -134,7 +134,7 @@ class _AudioCallScreenState extends State<AudioCallScreen> {
             left: 0,
             right: 0,
             child: Container(
-              padding: const EdgeInsets.all(32),
+              padding: const EdgeInsets.symmetric(vertical: 32,horizontal: 12),
               decoration: BoxDecoration(
                 gradient: LinearGradient(
                   begin: Alignment.bottomCenter,
@@ -145,41 +145,38 @@ class _AudioCallScreenState extends State<AudioCallScreen> {
                   ],
                 ),
               ),
-              child: Center(
-                child: Container(
-                  padding: const EdgeInsets.all(12),
-                  decoration: BoxDecoration(
-                    color: Colors.black.withOpacity(0.3),
-                    borderRadius: BorderRadius.circular(40),
-                    backgroundBlendMode: BlendMode.overlay,
-                  ),
-                  child: Row(
-                    mainAxisSize: MainAxisSize.min,
-                    children: [
-                      // Speaker Button
-                      _buildToolbarButton(
-                        icon: Icons.volume_up,
-                        backgroundColor: primaryColor.withOpacity(0.2),
-                        onPressed: () {
-                          // Toggle speaker
-                        },
-                      ),
-                      const SizedBox(width: 24),
-                      // Mic Button
-                      _buildToolbarButton(
-                        icon: isMuted ? Icons.mic_off : Icons.mic,
-                        backgroundColor: Colors.white.withOpacity(0.2),
-                        onPressed: () {
-                          setState(() {
-                            isMuted = !isMuted;
-                          });
-                        },
-                      ),
-                      const SizedBox(width: 24),
-                      // End Call Button
-                      _buildEndCallButton(),
-                    ],
-                  ),
+              child: Container(
+                padding: const EdgeInsets.all(12),
+                decoration: BoxDecoration(
+                  color: Colors.black.withOpacity(0.3),
+                  borderRadius: BorderRadius.circular(40),
+                  backgroundBlendMode: BlendMode.overlay,
+                ),
+                child: Row(
+                  mainAxisSize: MainAxisSize.min,
+                  mainAxisAlignment: MainAxisAlignment.spaceEvenly,
+                  children: [
+                    // Speaker Button
+                    _buildToolbarButton(
+                      icon: Icons.volume_up,
+                      backgroundColor: primaryColor.withOpacity(0.2),
+                      onPressed: () {
+                        // Toggle speaker
+                      },
+                    ),
+                    // Mic Button
+                    _buildToolbarButton(
+                      icon: isMuted ? Icons.mic_off : Icons.mic,
+                      backgroundColor: Colors.white.withOpacity(0.2),
+                      onPressed: () {
+                        setState(() {
+                          isMuted = !isMuted;
+                        });
+                      },
+                    ),
+                    // End Call Button
+                    _buildEndCallButton(),
+                  ],
                 ),
               ),
             ),

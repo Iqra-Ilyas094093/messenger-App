@@ -231,6 +231,7 @@ class _TopBar extends StatelessWidget {
           // Expand Button
           IconButton(
             onPressed: () {
+              Navigator.pop(context);
               // Handle expand/minimize
             },
             icon: Icon(
@@ -308,7 +309,7 @@ class _ControlBar extends StatelessWidget {
   @override
   Widget build(BuildContext context) {
     return Container(
-      padding: const EdgeInsets.all(24),
+      padding: const EdgeInsets.symmetric(vertical: 24,horizontal: 12),
       decoration: BoxDecoration(
         gradient: LinearGradient(
           begin: Alignment.bottomCenter,
@@ -320,54 +321,48 @@ class _ControlBar extends StatelessWidget {
         ),
       ),
       child: Row(
-        mainAxisAlignment: MainAxisAlignment.center,
+        mainAxisAlignment: MainAxisAlignment.spaceBetween,
         children: [
           // Mute Button
           _ControlButton(
             icon: isMuted ? Icons.mic_off : Icons.mic,
             backgroundColor: Colors.white.withOpacity(0.2),
             onPressed: onToggleMute,
-            size: 56,
+            size: 50,
           ),
-
-          const SizedBox(width: 24),
 
           // Video Button
           _ControlButton(
             icon: isVideoOff ? Icons.videocam_off : Icons.videocam,
             backgroundColor: Colors.white.withOpacity(0.2),
             onPressed: onToggleVideo,
-            size: 56,
+            size: 50,
           ),
 
-          const SizedBox(width: 24),
 
           // Add Call Button
           _ControlButton(
             icon: Icons.add_call,
             backgroundColor: const Color(0xFF04aeae),
             onPressed: onAddCall,
-            size: 56,
+            size: 50,
           ),
 
-          const SizedBox(width: 24),
 
           // Flip Camera Button
           _ControlButton(
             icon: Icons.flip_camera_android,
             backgroundColor: Colors.white.withOpacity(0.2),
             onPressed: onToggleCamera,
-            size: 56,
+            size: 50,
           ),
-
-          const SizedBox(width: 24),
 
           // End Call Button
           _ControlButton(
             icon: Icons.call_end,
             backgroundColor: Colors.red,
             onPressed: onEndCall,
-            size: 64,
+            size: 50,
             iconSize: 32,
           ),
         ],

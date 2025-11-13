@@ -190,7 +190,7 @@ class _ChatHeader extends StatelessWidget {
             children: [
               IconButton(
                 onPressed: () {
-                  Navigator.of(context).push(MaterialPageRoute(builder: (_)=>IncomingCallScreen()));
+                  Navigator.of(context).push(MaterialPageRoute(builder: (_)=>AudioCallScreen()));
                 },
                 icon: const Icon(Icons.call),
                 color: textColor.withOpacity(0.8),

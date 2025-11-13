@@ -60,7 +60,7 @@ class _NavigationState extends State<Navigation> {
             BottomNavigationBarItem(
               icon: Icon(Icons.group_outlined),
               activeIcon: Icon(Icons.group),
-              label: 'Contacts',
+              label: 'Groups',
             ),
             BottomNavigationBarItem(
               icon: Icon(Icons.call_outlined),

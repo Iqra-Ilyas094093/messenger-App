@@ -1,5 +1,7 @@
 import 'package:flutter/material.dart';
+import 'package:messenger_app/views/screens/group_audio_call_screen.dart';
 import 'package:messenger_app/views/screens/group_details_screen.dart';
+import 'package:messenger_app/views/screens/group_video_call_screen.dart';
 
 void main() {
   runApp(const MyApp());
@@ -77,7 +79,7 @@ class _GroupChatScreenState extends State<GroupChatScreen> {
             child: BackdropFilter(
               filter: const ColorFilter.mode(Colors.transparent, BlendMode.srcOver),
               child: Padding(
-                padding: const EdgeInsets.symmetric(horizontal: 16, vertical: 12),
+                padding: const EdgeInsets.symmetric(vertical: 12),
                 child: Row(
                   children: [
                     IconButton(
@@ -87,7 +89,6 @@ class _GroupChatScreenState extends State<GroupChatScreen> {
                       icon: const Icon(Icons.arrow_back_ios_new),
                       color: isDark ? Colors.white.withOpacity(0.8) : Colors.black.withOpacity(0.8),
                     ),
-                    const SizedBox(width: 16),
                     Container(
                       width: 40,
                       height: 40,
@@ -133,8 +134,16 @@ class _GroupChatScreenState extends State<GroupChatScreen> {
                       ),
                     ),
                     IconButton(
-                      onPressed: () {},
+                      onPressed: () {
+                        Navigator.of(context).push(MaterialPageRoute(builder: (_)=>GroupAudioCallScreen()));
+                      },
                       icon: const Icon(Icons.call),
+                      color: isDark ? Colors.white.withOpacity(0.8) : Colors.black.withOpacity(0.8),
+                    ),IconButton(
+                      onPressed: () {
+                        Navigator.of(context).push(MaterialPageRoute(builder: (_)=>GroupVideoCallScreen()));
+                      },
+                      icon: const Icon(Icons.video_call),
                       color: isDark ? Colors.white.withOpacity(0.8) : Colors.black.withOpacity(0.8),
                     ),
                     IconButton(

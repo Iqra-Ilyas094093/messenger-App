@@ -1,5 +1,6 @@
 import 'package:flutter/material.dart';
 import 'package:messenger_app/views/screens/chatScreen.dart';
+import 'package:messenger_app/views/screens/contact_list_screens.dart';
 class Chat {
   final String name;
   final String lastMessage;
@@ -114,7 +115,9 @@ class _MessengerScreenState extends State<MessengerScreen> {
               ),
               actions: [
                 IconButton(
-                  onPressed: () {},
+                  onPressed: () {
+                    Navigator.of(context).push(MaterialPageRoute(builder: (_)=>ContactsPage()));
+                  },
                   icon: Icon(
                     Icons.search,
                     color: isDark ? const Color(0xFF94A3B8) : const Color(0xFF64748B),
